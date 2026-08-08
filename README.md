@@ -24,6 +24,15 @@ bun run dev
 Deployment runs `build`, not `build:all` — the build host has no Typst
 installed, so the PDF is committed and regenerated locally instead.
 
+## Deploying
+
+Cloudflare Workers, serving `dist/` as static assets. `wrangler.jsonc` holds
+that configuration.
+
+The site is fully prerendered, so it does not use `@astrojs/cloudflare`. That
+adapter is for server-rendered routes, and adding it pulls in a version of
+Astro's internals this project does not use.
+
 ## The resume
 
 `resume/resume.typ` is the source. The PDF at `public/nasrullah-resume.pdf` is
