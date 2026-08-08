@@ -1,0 +1,247 @@
+---
+import Base from "@/layouts/Base.astro"
+import Section from "@/components/Section.astro"
+import Logo from "@/components/Logo.astro"
+import { Image } from "astro:assets"
+import portrait from "@/assets/photos/portrait.png"
+import {
+  profile,
+  experience,
+  projects,
+  alsoBuilt,
+  competitions,
+  timeline,
+} from "@/data/resume"
+import ThemeToggle from "@/components/ThemeToggle.astro"
+
+const navLinks = [
+  { label: "GitHub", href: profile.github },
+  { label: "LinkedIn", href: profile.linkedin },
+  { label: "Résumé", href: "/nasrullah-resume.pdf" },
+  { label: "Email", href: `mailto:${profile.email}` },
+]
+
+const contacts = [
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { label: "GitHub", value: "Coeeter", href: profile.github },
+  { label: "LinkedIn", value: "noorullah-nasrullah", href: profile.linkedin },
+]
+---
+
+<Base>
+  <div class="mb-12 flex items-center gap-3">
+    <Logo size={30} />
+
+    <nav class="-mx-2 flex flex-1 flex-wrap items-center" aria-label="Elsewhere">
+      {
+        navLinks.map((item) => (
+          <a
+            class="text-muted hover:text-fg hover:bg-line/70 rounded-md px-2 py-1 text-sm transition-colors"
+            href={item.href}
+            rel="noopener"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <ThemeToggle />
+  </div>
+
+  <header class="flex items-center gap-5">
+    <Image
+      src={portrait}
+      alt=""
+      width={160}
+      height={160}
+      loading="eager"
+      class="border-line size-20 shrink-0 rounded-full border object-cover"
+    />
+    <div>
+      <h1 class="text-2xl font-semibold tracking-tight sm:text-3xl">
+        {profile.name}
+      </h1>
+      <p class="text-muted">{profile.role} · {profile.location}</p>
+    </div>
+  </header>
+
+  <p class="mt-7 max-w-[62ch] text-[17px] leading-relaxed">{profile.intro}</p>
+
+  <Section title="Experience">
+    {
+      experience.map((role) => (
+        <article>
+          <h3 class="font-medium">
+            {role.role}, {role.company}
+          </h3>
+          <p class="text-muted text-sm">{role.period}</p>
+          <ul class="mt-3 grid gap-2">
+            {role.points.map((point) => (
+              <li class="text-muted flex gap-2.5 leading-relaxed">
+                <span class="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-current opacity-50" />
+                <span>{point}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </Section>
+
+  <Section title="Selected work">
+    <div class="grid gap-8">
+      {
+        projects.map((project) => (
+          <article>
+            <h3 class="flex flex-wrap items-baseline gap-x-3">
+              <span class="font-medium">{project.name}</span>
+              <span class="text-muted text-sm tabular-nums">{project.year}</span>
+              {project.note && (
+                <span class="text-muted border-line rounded border px-1.5 py-0.5 text-xs">
+                  {project.note}
+                </span>
+              )}
+            </h3>
+            <p class="mt-1">{project.blurb}</p>
+            <p class="text-muted mt-2 leading-relaxed">{project.detail}</p>
+            <p class="text-muted mt-2.5 text-sm">{project.stack.join(" · ")}</p>
+            {project.noSource && (
+              <p class="text-muted mt-2 text-sm italic">{project.noSource}</p>
+            )}
+            {(project.repo || project.link) && (
+              <p class="mt-2 flex flex-wrap gap-x-5 text-sm">
+                {project.link && (
+                  <a
+                    class="text-accent font-medium underline underline-offset-4"
+                    href={project.link}
+                    rel="noopener"
+                  >
+                    {project.linkLabel ?? "Live"}
+                  </a>
+                )}
+                {project.repo && (
+                  <a
+                    class="text-accent underline underline-offset-4"
+                    href={project.repo}
+                    rel="noopener"
+                  >
+                    Source
+                  </a>
+                )}
+              </p>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section title="Competitions">
+    <ul class="grid gap-4">
+      {
+        competitions.map((entry) => (
+          <li>
+            <p class="flex flex-wrap items-baseline gap-x-3">
+              <span class="font-medium">{entry.event}</span>
+              <span class="text-muted text-sm tabular-nums">{entry.year}</span>
+              <span class="text-muted text-sm">{entry.result}</span>
+            </p>
+            <p class="text-muted">
+              {entry.detail}{" "}
+              {entry.href && (
+                <a
+                  class="text-accent whitespace-nowrap underline underline-offset-4"
+                  href={entry.href}
+                  rel="noopener"
+                >
+                  Source
+                </a>
+              )}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section title="Smaller things">
+    <ul class="grid gap-2.5">
+      {
+        alsoBuilt.map((entry) => (
+          <li class="flex flex-col gap-0.5 sm:flex-row sm:gap-4">
+            <span class="shrink-0 font-medium sm:w-32">
+              {entry.href ? (
+                <a
+                  class="decoration-[var(--line)] underline underline-offset-4"
+                  href={entry.href}
+                  rel="noopener"
+                >
+                  {entry.name}
+                </a>
+              ) : (
+                entry.name
+              )}
+            </span>
+            <span class="text-muted flex-1">{entry.detail}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </Section>
+
+  <Section title="Timeline">
+    <ol class="grid gap-0">
+      {
+        timeline.map((item, index) => (
+          <li class="flex gap-4">
+            <div class="flex flex-col items-center pt-[0.45rem]">
+              <span class="bg-muted size-1.5 shrink-0 rounded-full" />
+              {index < timeline.length - 1 && (
+                <span class="bg-line w-px flex-1" />
+              )}
+            </div>
+            <div class="flex flex-1 flex-col gap-x-4 pb-5 sm:flex-row">
+              <span class="text-muted shrink-0 text-sm tabular-nums sm:w-28 sm:pt-0.5">
+                {item.period}
+              </span>
+              <span class="flex-1">
+                <span class="font-medium">{item.label}</span>
+                {item.detail && (
+                  <span class="text-muted block text-sm">{item.detail}</span>
+                )}
+              </span>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </Section>
+
+  <Section title="Contact">
+    <ul class="grid gap-2">
+      {
+        contacts.map((contact) => (
+          <li class="flex gap-4">
+            <span class="text-muted w-20 shrink-0 text-sm">{contact.label}</span>
+            <a
+              class="text-accent underline underline-offset-4"
+              href={contact.href}
+              rel="noopener"
+            >
+              {contact.value}
+            </a>
+          </li>
+        ))
+      }
+      <li class="flex gap-4">
+        <span class="text-muted w-20 shrink-0 text-sm">Résumé</span>
+        <a
+          class="text-accent underline underline-offset-4"
+          href="/nasrullah-resume.pdf">PDF</a
+        >
+      </li>
+    </ul>
+  </Section>
+
+</Base>
