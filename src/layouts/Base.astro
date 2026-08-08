@@ -1,0 +1,48 @@
+---
+import "@/styles/global.css"
+import { Font } from "astro:assets"
+import { profile } from "@/data/resume"
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = `${profile.name} — ${profile.role}`,
+  description = profile.intro,
+} = Astro.props
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <Font cssVariable="--font-inter" preload />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <script is:inline>
+      const stored = localStorage.getItem("theme")
+      const dark =
+        stored === "dark" ||
+        (stored === null &&
+          matchMedia("(prefers-color-scheme: dark)").matches)
+      document.documentElement.classList.toggle("dark", dark)
+    </script>
+  </head>
+  <body>
+    <main class="mx-auto max-w-4xl px-6 py-12 sm:px-10 sm:py-16">
+      <slot />
+    </main>
+  </body>
+</html>
