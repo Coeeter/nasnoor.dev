@@ -11,7 +11,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
-    "resume": "typst compile resume/resume.typ public/nasrullah-resume.pdf --root ."
+    "resume": "typst compile resume/resume.typ public/nasrullah-resume.pdf --root .",
+    "build:all": "bun run resume && astro build"
   },
   "dependencies": {
     "astro": "^7.1.4"
