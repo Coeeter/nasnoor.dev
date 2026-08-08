@@ -1,43 +1,64 @@
-# Astro Starter Kit: Minimal
+# nasnoor.dev
 
-```sh
-bun create astro@latest -- --template minimal
+My portfolio. One page, no framework on the client, static output.
+
+Live at [nasnoor.dev](https://nasnoor.dev).
+
+## Running it
+
+```bash
+bun install
+bun run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Scripts
 
-## 🚀 Project Structure
+| Script | What it does |
+| --- | --- |
+| `bun run dev` | Dev server on port 4321 |
+| `bun run build` | Static build into `dist/` |
+| `bun run check` | Type check, including `.astro` files |
+| `bun run resume` | Recompile the resume PDF from Typst |
+| `bun run build:all` | Resume, then site |
 
-Inside of your Astro project, you'll see the following folders and files:
+Deployment runs `build`, not `build:all` — the build host has no Typst
+installed, so the PDF is committed and regenerated locally instead.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+## The resume
+
+`resume/resume.typ` is the source. The PDF at `public/nasrullah-resume.pdf` is
+generated from it, so edit the `.typ` file and run `bun run resume` rather than
+touching the PDF.
+
+Typst is installed separately:
+
+```bash
+brew install typst
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+It is kept to one page, single column, with no tables and contact details in
+the body rather than the page header, since applicant tracking systems tend to
+skip headers.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Content
 
-Any static assets, like images, can be placed in the `public/` directory.
+Everything the page renders lives in `src/data/resume.ts`. Adding a project or
+changing a link means editing that file, not the markup.
 
-## 🧞 Commands
+The site copy and the resume copy are deliberately written differently. The
+site is plain and short; the resume keeps the formal register and the technical
+detail that recruiters and keyword scanners look for.
 
-All commands are run from the root of the project, from a terminal:
+## Built with
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `bun install`             | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+Astro, Tailwind, TypeScript, Typst. Fonts are self-hosted and preloaded through
+Astro's font pipeline, which also generates a metric-matched fallback so text
+does not shift while the real font loads.
 
-## 👀 Want to learn more?
+## Notes
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Theme follows the system until you pick one, then remembers the choice.
+- The logo is a single SVG path. The stroke animation draws it on load, and on
+  hover it runs a full pass and finishes wherever it is rather than snapping
+  back.
+- Scroll to the bottom.
