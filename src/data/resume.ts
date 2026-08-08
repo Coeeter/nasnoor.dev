@@ -22,9 +22,9 @@ export const experience = [
     role: "Software Engineer, Intern",
     period: "Apr 2023 – May 2024",
     points: [
-      "Worked on the front end of a ground-up rebuild of a licensing and audit service for a government ministry, in Vue and ASP.NET.",
-      "Spent the last five months on a newly formed AI team, building the document ingestion pipeline behind a retrieval assistant for ministry staff.",
-      "The assistant shipped and the team carried it on after I left.",
+      "Part of the tech refresh replacing a ministry's ageing licensing and audit system. I built the front end, from requirements through to production.",
+      "Moved to a newly formed AI team for the last five months and built the pipeline that fed staff documents into an assistant they could ask questions of.",
+      "It shipped as a real product, not a prototype, and the team kept it going after I left.",
     ],
   },
 ] as const

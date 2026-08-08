@@ -87,9 +87,9 @@ open-source tooling used by other engineers.
 )
 
 #bullets(
-  [Built the front end for a ground-up rebuild of a licensing and audit service
-   for a government ministry, in Vue and ASP.NET, from requirements and design
-   review through to production delivery.],
+  [Delivered the front end for a tech refresh replacing a government ministry's
+   legacy licensing and audit system, from requirements and design review
+   through to production.],
   [Joined a newly formed AI team for the final five months and built the
    document ingestion pipeline behind a retrieval-augmented assistant used by
    ministry staff, including work to reduce hallucinated answers.],
