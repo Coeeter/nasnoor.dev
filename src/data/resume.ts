@@ -194,25 +194,3 @@ export const timeline = [
   },
 ] as const
 
-export const education = [
-  {
-    institution: "National University of Singapore",
-    qualification: "B.Comp. Computer Science",
-    period: "2026 – present",
-  },
-  {
-    institution: "Temasek Polytechnic",
-    qualification: "Diploma in Information Technology",
-    period: "2021 – 2024",
-    note: "GPA 3.86, Director's List.",
-  },
-] as const
-
-export const skills = [
-  { group: "Languages", items: ["TypeScript", "Go", "Kotlin", "Python", "Java", "SQL"] },
-  { group: "Web", items: ["React", "TanStack Start", "Astro", "Vue", "Next.js"] },
-  { group: "Backend", items: ["Effect", "Bun", "Node.js", "Ktor", "ASP.NET"] },
-  { group: "Data", items: ["PostgreSQL", "MySQL", "SQLite", "Redis", "Drizzle", "Prisma"] },
-  { group: "Cloud", items: ["AWS Lambda", "Serverless Framework", "Cloudflare Workers"] },
-  { group: "DevOps", items: ["Docker", "GitHub Actions", "Linux", "Dokploy"] },
-] as const
