@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 256 256"
+    role="img"
+    aria-labelledby="title desc">
+  <title id="title">Editorial N monogram – light mode</title>
+  <desc id="desc">A rounded-square icon with an evenly spaced subtle grid and a cursive N monogram.</desc>
+
+  <defs>
+    <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse">
+      <path d="M 18 0 L 0 0 0 18"
+            fill="none"
+            stroke="#EEE9E0"
+            stroke-width="1"/>
+    </pattern>
+    <clipPath id="clip">
+      <rect x="8" y="8" width="240" height="240" rx="52" ry="52"/>
+    </clipPath>
+  </defs>
+
+  <rect x="8" y="8" width="240" height="240" rx="52" ry="52" fill="#F7F4EE"/>
+
+  <g clip-path="url(#clip)">
+    <rect x="8" y="8" width="240" height="240" fill="url(#grid)"/>
+  </g>
+
+  <g transform="translate(30 28) scale(3.15)">
+    <path d="M 2 15
+C 7 9, 12 5, 17 6
+C 20 7, 20 10, 19 15
+C 18 25, 16 40, 15 50
+C 14 56, 18 57, 22 51
+C 30 39, 38 24, 46 11
+C 48 8, 52 7, 53 11
+C 54 16, 52 25, 51 33
+C 50 41, 49 48, 49 52
+C 49 56, 54 59, 62 61"
+      transform="translate(0,64) scale(1,-1)"
+      fill="none"
+      stroke="#141414"
+      stroke-width="4.25"
+      stroke-linecap="round"
+      stroke-linejoin="round"/>
+  </g>
+</svg>
