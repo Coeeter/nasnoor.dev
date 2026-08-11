@@ -1,53 +1,171 @@
-#let accent = rgb("#16181a")
-
-#set document(
-  title: "Noorullah Nasrullah — Resume",
-  author: "Noorullah Nasrullah",
+#let profile = (
+  name: "Noorullah Nasrullah",
+  role: "Software Engineer",
+  location: "Singapore",
+  email: "nasrullah01n@gmail.com",
+  website: "nasnoor.dev",
+  github: "github.com/Coeeter",
+  linkedin: "linkedin.com/in/noorullah-nasrullah",
 )
 
-#set page(
-  paper: "a4",
-  margin: (x: 16mm, top: 14mm, bottom: 14mm),
+#let summary = [
+  NUS Computer Science undergraduate with 14 months of software engineering
+  experience at GovTech Singapore. Delivered the frontend for a production
+  government licensing-system replacement and built document ingestion for a
+  retrieval assistant used by ministry staff.
+]
+
+#let govtech = (
+  role: "Software Engineering Intern",
+  organisation: "GovTech Singapore",
+  dates: "Apr 2023 - May 2024",
+  bullets: (
+    [Delivered the frontend for the production replacement of the Ministry of
+     Manpower's legacy iOSH licensing and audit system, contributing from
+     requirements and design review through implementation and rollout.],
+    [Joined a newly formed AI team for the final five months and built the
+     document ingestion pipeline for a retrieval-augmented assistant used by
+     ministry staff, parsing source files, extracting content and feeding it
+     into the assistant's retrieval pipeline.],
+    [Proposed and built 7Patches to replace an ad-hoc database patch and query
+     process with reviewed requests, approval routing, execution logs and a
+     searchable audit trail; led a small team of interns through delivery and
+     received the DBS Bank Project Award.],
+  ),
 )
 
+#let projects = (
+  (
+    title: "AnimeKaiser",
+    dates: "2026",
+    link: "https://github.com/Coeeter/animekaiser",
+    subtitle: [Self-hosted anime library with two-way synchronisation across
+      AniList and MyAnimeList. Bun, Effect, TanStack Start, Drizzle, PostgreSQL.],
+    bullets: (
+      [Made outbound changes durable and retryable using Postgres
+       `LISTEN/NOTIFY`, avoiding a separate queue service.],
+      [Separated source resolution behind a typed RPC boundary; added passkey
+       authentication and end-to-end tests running in CI on every deploy.],
+    ),
+  ),
+  (
+    title: "ClickToEat",
+    dates: "2022 - 2023",
+    link: "https://github.com/Coeeter/kt-android-clicktoeat",
+    subtitle: [Restaurant review platform developed across web, API, Android
+      and Flutter coursework. Kotlin, Jetpack Compose, Hilt, Google Maps SDK.],
+    bullets: (
+      [Built the Android client as a multi-module application with 43 unit and
+       instrumented UI test files across JUnit, Compose Test and UI Automator.],
+    ),
+  ),
+  (
+    title: "drizzle-cuid2",
+    dates: "2024",
+    link: "https://github.com/Coeeter/drizzle-cuid2",
+    subtitle: [Small TypeScript utility providing CUID2 column helpers for
+      Drizzle ORM across PostgreSQL, MySQL and SQLite; published on npm.],
+    bullets: (),
+  ),
+)
+
+#let education = (
+  (
+    institution: "National University of Singapore",
+    dates: "2026 - 2030 (expected)",
+    qualification: "Bachelor of Computing in Computer Science",
+    detail: none,
+  ),
+  (
+    institution: "Temasek Polytechnic",
+    dates: "2021 - 2024",
+    qualification: "Diploma in Information Technology - GPA 3.86",
+    detail: [Eleven distinctions; Director's List (top 10% of cohort).],
+  ),
+)
+
+#let service = (
+  title: "Full-time National Service",
+  organisation: "Singapore Police Force",
+  dates: "2024 - 2026",
+  detail: "Ground Response Force Officer, Airport Police Division",
+)
+
+#let awards = (
+  (
+    title: "WorldSkills Singapore - Bronze Medallist",
+    dates: "2023",
+    detail: "Mobile Application Development",
+  ),
+  (
+    title: "iNTUition - Best Pre-University Award",
+    dates: "2023",
+    detail: "EmailGPT, a Gmail extension for drafting replies in place",
+  ),
+)
+
+#let skills = (
+  (label: "Languages", value: "TypeScript, Go, Kotlin, Python, Java"),
+  (label: "Technologies", value: "React, Node.js, Bun, PostgreSQL, Docker, AWS"),
+)
+
+#let ink = rgb("#16181a")
+#let soft = rgb("#f4f1eb")
+
+#set document(title: "Noorullah Nasrullah - Resume", author: profile.name)
+#set page(paper: "a4", margin: (x: 16mm, top: 13mm, bottom: 13mm))
 #set text(
   font: ("Helvetica Neue", "Helvetica", "Arial"),
-  size: 9.7pt,
-  fill: accent,
+  size: 10.2pt,
+  fill: ink,
   lang: "en",
 )
-
-#set par(justify: false, leading: 0.62em, spacing: 0.85em)
-
-#show link: it => underline(offset: 2pt, stroke: 0.4pt, it)
+#set par(justify: false, leading: 3.6pt, spacing: 0pt)
+#show link: it => it
 
 #let section(title) = {
-  v(3pt)
+  v(13pt)
   block(
     width: 100%,
-    stroke: (bottom: 0.6pt + accent),
-    inset: (bottom: 3pt),
-    text(size: 8.2pt, weight: "bold", tracking: 1.1pt, upper(title)),
+    stroke: (bottom: 0.6pt + ink),
+    inset: (bottom: 2.5pt),
+    text(size: 8.8pt, weight: "bold", tracking: 1pt, upper(title)),
   )
-  v(3pt)
 }
 
-#let entry(title, meta, subtitle: none) = {
-  block(spacing: 4pt)[
+#let heading(title, organisation, dates, detail: none) = {
+  v(10pt)
+  block(width: 100%)[
     #grid(
       columns: (1fr, auto),
       gutter: 8pt,
-      text(weight: "bold", title),
-      text(size: 9pt, meta),
+      [#text(weight: "bold", title)#if organisation != [] [ #text(weight: "regular")[at] #text(weight: "bold", organisation)]],
+      text(size: 9.3pt, dates),
     )
-    #if subtitle != none [#text(size: 9pt)[#subtitle]]
+    #if detail != none [#v(4pt)#text(size: 9.3pt, detail)]
   ]
 }
 
-#let bullets(..items) = {
-  set list(indent: 0pt, body-indent: 6pt, marker: [•], spacing: 3.5pt)
-  v(2pt)
-  list(..items)
+#let project-heading(project) = {
+  let title = if project.link == none {
+    project.title
+  } else {
+    link(project.link, project.title)
+  }
+  heading(title, [], project.dates, detail: project.subtitle)
+}
+
+#let bullets(items) = {
+  v(4pt)
+  block[
+    #set list(
+      indent: 0pt,
+      body-indent: 7pt,
+      marker: [#sym.bullet],
+      spacing: 6pt,
+    )
+    #list(..items)
+  ]
   v(2pt)
 }
 
@@ -55,132 +173,51 @@
   columns: (auto, 1fr),
   gutter: 10pt,
   align: horizon,
-  image("logo.svg", width: 13mm),
-  [
-    #text(size: 19pt, weight: "bold")[Noorullah Nasrullah] \
-    #v(1pt)
-    #text(size: 10pt)[Software Engineer · Singapore]
-  ],
+  box(fill: soft, inset: 3pt, radius: 4pt)[#image("logo.svg", width: 12mm)],
+  stack(
+    dir: ttb,
+    spacing: 4pt,
+    text(size: 21.5pt, weight: "bold", profile.name),
+    text(size: 10.5pt)[#profile.role - #profile.location],
+  ),
 )
-
-#v(5pt)
-
+#v(7pt)
 #text(size: 9pt)[
-  #link("mailto:nasrullah01n@gmail.com")[nasrullah01n\@gmail.com]
-  · #link("https://nasnoor.dev")[nasnoor.dev]
-  · #link("https://github.com/Coeeter")[github.com/Coeeter]
-  · #link("https://www.linkedin.com/in/noorullah-nasrullah/")[linkedin.com/in/noorullah-nasrullah]
+  #show link: it => underline(offset: 2pt, stroke: 0.35pt, it)
+  #link("mailto:" + profile.email)[#profile.email] | #link("https://" + profile.website)[#profile.website]
+  | #link("https://" + profile.github)[#profile.github] | #link("https://" + profile.linkedin)[#profile.linkedin]
 ]
+#v(9pt)
+#summary
 
-#v(6pt)
-
-Computer science undergraduate at NUS. Fourteen months at GovTech Singapore
-building a government licensing service and the document ingestion pipeline
-behind a retrieval assistant for ministry staff. Publishes and maintains
-open-source tooling used by other engineers.
-
-#section("Experience")
-
-#entry(
-  "Software Engineer, Intern — GovTech Singapore",
-  "Apr 2023 – May 2024",
-)
-
-#bullets(
-  [Delivered the front end for a tech refresh replacing a government ministry's
-   legacy licensing and audit system, from requirements and design review
-   through to production.],
-  [Joined a newly formed AI team for the final five months and built the
-   document ingestion pipeline behind a retrieval-augmented assistant used by
-   ministry staff, including work to reduce hallucinated answers.],
-  [The assistant shipped as a product rather than a prototype; the team carried
-   it forward after the internship ended.],
-  [Extended past the original internship contract to continue the work.],
-)
+#section("Software Experience")
+#heading(govtech.role, govtech.organisation, govtech.dates)
+#bullets(govtech.bullets)
 
 #section("Selected Projects")
+#for project in projects {
+  project-heading(project)
+  if project.bullets.len() > 0 { bullets(project.bullets) }
+}
 
-#entry("AnimeKaiser", "2026", subtitle: [
-  Self-hosted anime library with two-way synchronisation across AniList and
-  MyAnimeList. Bun, Effect, TanStack Start, Drizzle, PostgreSQL.
-])
-#bullets(
-  [Outbound changes become durable, retryable jobs dispatched over Postgres
-   LISTEN/NOTIFY rather than an external queue.],
-  [Source resolution sits behind a typed RPC boundary in a separate service, so
-   the published repository depends on an interface, not an implementation.],
-  [Six-package Effect monorepo with passkey authentication and end-to-end tests
-   running in CI on every deploy.],
+#section("Education and Service")
+#let nus = education.at(0)
+#heading(nus.institution, [], nus.dates, detail: nus.qualification)
+#heading(service.title, service.organisation, service.dates, detail: service.detail)
+#let tp = education.at(1)
+#heading(tp.institution, [], tp.dates, detail: tp.qualification)
+#v(4pt)
+#text(size: 9.3pt, tp.detail)
+
+#section("Selected Awards")
+#for award in awards {
+  heading(award.title, [], award.dates, detail: award.detail)
+}
+
+#section("Skills")
+#v(8pt)
+#stack(
+  dir: ttb,
+  spacing: 7pt,
+  ..skills.map(skill => [#text(weight: "bold", skill.label) - #skill.value]),
 )
-
-#entry("7Patches — DBS Bank Project Award", "2024", subtitle: [
-  Data patch and query management system. Next.js, Prisma, AWS Lambda, GitHub
-  Actions.
-])
-#bullets(
-  [Replaced an ad-hoc manual database-change process with a reviewed, audited
-   workflow: request submission, approval routing, execution logging and a
-   searchable audit trail.],
-  [Proposed and prototyped independently, then led a small team of interns
-   through delivery.],
-)
-
-#entry("ClickToEat", "2022 – 2023", subtitle: [
-  Restaurant review platform built across four polytechnic modules. Kotlin,
-  Jetpack Compose, Hilt, Google Maps SDK, Firebase Cloud Messaging.
-])
-#bullets(
-  [Each module required a different platform, so the same product was carried
-   through a web app, a TypeScript REST API, a native Android client and a
-   Flutter client, making the stacks directly comparable.],
-  [The Android client is a multi-module build following Clean Architecture, with
-   43 unit and instrumented UI test files (JUnit, Mockito, Compose Test, UI
-   Automator).],
-)
-
-#entry("Command line tools", "2026", subtitle: [
-  Go, Cobra, Bubble Tea.
-])
-#bullets(
-  [#emph[ntmux] applies tmux sessions from JSON or YAML; #emph[zap] finds and
-   clears build artefacts; #emph[cmdhelper] turns natural language into shell
-   commands using local shell and git context.],
-)
-
-#section("Education")
-
-#entry(
-  "National University of Singapore",
-  "2026 – present",
-  subtitle: [B.Comp. Computer Science],
-)
-
-#v(3pt)
-
-#entry(
-  "Temasek Polytechnic",
-  "2021 – 2024",
-  subtitle: [Diploma in Information Technology — GPA 3.86],
-)
-#bullets(
-  [Eleven distinctions, including Data Structures & Algorithms, Full Stack Web
-   Development, Cloud Application Development and Major Project.],
-  [Bronze medallist, WorldSkills Singapore — Mobile Application Development.
-   Director's List, top 10% of cohort.],
-)
-
-#section("Technical Skills")
-
-#set par(spacing: 3.5pt)
-
-*Languages* — TypeScript, Go, Kotlin, Python, Java, SQL
-
-*Web* — React, TanStack Start, Astro, Vue, Next.js, SvelteKit
-
-*Backend* — Effect, Bun, Node.js, Ktor, Spring Boot, ASP.NET
-
-*Data* — PostgreSQL, MySQL, SQLite, Redis, Drizzle ORM, Prisma
-
-*Cloud* — AWS Lambda, Serverless Framework, Cloudflare Workers
-
-*DevOps* — Docker, CI/CD with GitHub Actions, Linux, Dokploy, self-managed VPS
