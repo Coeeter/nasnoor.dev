@@ -24,7 +24,7 @@ export const experience = [
     points: [
       "Translated MOM user requirements and legacy iOSH workflows into business process models and Figma prototypes for iOSH 2.0 licensing modules; conducted UAT before rollout and reported defects to vendors.",
       "Reverse-engineered iOSH data sources and migrated MOM Insight dashboard logic into SQL queries during a database decommissioning, validating reports against production data with ministry users.",
-      "During an internship extension, joined a newly formed AI team to evaluate an internal retrieval-augmented assistant for MOM. Curated ministry documents, laws and rules, experimented with prompting, tested hallucinations and handed the work to the next team.",
+      "During an internship extension, joined a newly formed AI team to evaluate an internal retrieval-augmented assistant for MOM. Curated ministry documents, laws and rules, evaluated prompting strategies and tested for hallucinated answers.",
     ],
   },
 ] as const
@@ -66,16 +66,16 @@ export const projects: readonly Project[] = [
     name: "7Patches",
     year: "2024",
     blurb:
-      "Turned a risky database workflow into a clear request-and-review experience.",
+      "Designed a student major-project prototype around a risky database workflow.",
     detail:
       "I designed separate requestor and reviewer flows around clear statuses, " +
       "feedback and error states, then refined them through repeated stakeholder " +
-      "demos. Behind the interface were approval routing, execution logs and a " +
-      "searchable audit trail replacing an ad-hoc manual process.",
+      "demos. The prototype added approval routing, execution logs and a searchable " +
+      "audit trail around the existing manual process.",
     stack: ["Next.js", "Prisma", "AWS Lambda", "GitHub Actions"],
     note: "DBS Bank Project Prize",
     noSource:
-      "Student project prototype — source is private, and the screenshot is not MOM's current production system.",
+      "Student major-project prototype developed around a real workflow. Source is private; the screenshot shows the prototype, not MOM's current system.",
   },
   {
     slug: "clicktoeat",

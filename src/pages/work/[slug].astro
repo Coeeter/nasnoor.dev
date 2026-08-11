@@ -78,7 +78,12 @@ const { study } = Astro.props as { study: Study }
       {study.sections.map((section) => (
         <section class="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-8">
           <h2 class="font-semibold">{section.title}</h2>
-          <p class="text-muted max-w-[65ch] leading-relaxed">{section.body}</p>
+          <div>
+            <p class="text-muted max-w-[65ch] leading-relaxed">{section.body}</p>
+            {"code" in section && (
+              <pre class="border-line mt-4 overflow-x-auto rounded-lg border bg-white/40 p-4 text-sm leading-relaxed dark:bg-black/20"><code>{section.code}</code></pre>
+            )}
+          </div>
         </section>
       ))}
     </div>

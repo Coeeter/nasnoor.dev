@@ -78,7 +78,7 @@ export const caseStudies = [
     title: "7Patches",
     eyebrow: "GovTech internship major project · 2023–2024",
     summary:
-      "A reviewed path for database requests that replaced an ad-hoc process with approvals, execution records and an audit trail.",
+      "A student major-project prototype designed around a real database-request workflow, with approvals, execution records and an audit trail.",
     image: patchesDashboard,
     imageAlt: "7Patches reviewer dashboard showing request statuses and pending reviews",
     facts: [
@@ -88,7 +88,7 @@ export const caseStudies = [
     ],
     links: [],
     note:
-      "This is the student major-project prototype I built with fellow interns, not a screenshot of MOM's current production system.",
+      "Source is private. The screenshot shows the student prototype I built with fellow interns, not MOM's current system.",
     sections: [
       {
         title: "The missing link",
@@ -103,7 +103,7 @@ export const caseStudies = [
       {
         title: "The workflow behind it",
         body:
-          "The interface guided approval, rejection and feedback before manual or scheduled execution. Error handling, notifications, result retrieval and downloadable audit records made the process safer without exposing users to the underlying database mechanics.",
+          "The interface guided approval, rejection and feedback before manual or scheduled execution. Error handling, notifications, result retrieval and downloadable audit records were designed to make the process safer without exposing users to the underlying database mechanics.",
       },
       {
         title: "How it developed",
@@ -138,6 +138,17 @@ export const caseStudies = [
         title: "The small solution",
         body:
           "The package exposes native-looking column builders for each supported Drizzle dialect. They retain methods such as primaryKey, notNull and references, then add defaultRandom, setLength and setPrefix for CUID2-specific behaviour.",
+      },
+      {
+        title: "Actual usage",
+        body:
+          "A PostgreSQL primary key keeps Drizzle's fluent column API while generating the identifier in the application:",
+        code: `import { pgTable } from "drizzle-orm/pg-core"
+import { cuid2 } from "drizzle-cuid2/postgres"
+
+export const users = pgTable("users", {
+  id: cuid2("id").defaultRandom().primaryKey(),
+})`,
       },
       {
         title: "Why three implementations",
