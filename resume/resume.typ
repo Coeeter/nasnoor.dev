@@ -20,18 +20,21 @@
   organisation: "GovTech Singapore",
   dates: "Apr 2023 - May 2024",
   bullets: (
-    [Delivered the frontend for the production replacement of the Ministry of
-     Manpower's legacy iOSH licensing and audit system, contributing from
-     requirements and design review through implementation and rollout.],
+    [Translated MOM user requirements and legacy iOSH workflows into business
+     process models and Figma prototypes for iOSH 2.0 licensing modules;
+     conducted UAT before rollout and reported defects to vendors.],
+    [Reverse-engineered iOSH data sources and migrated MOM Insight dashboard
+     logic into SQL queries during a database decommissioning, validating
+     reports against production data with ministry users.],
     [Joined a newly formed AI team during an internship extension to evaluate an
      internal retrieval-augmented assistant for MOM, curating ministry documents,
      laws and rules, experimenting with prompting strategies, testing
      hallucinations and handing the work over to the next team.],
     [Proposed 7Patches and served as primary developer on a team of seven interns,
-     iterating with stakeholders from November to February to replace an
-     inefficient, error-prone database patch and query process with reviewed
-     requests, approval routing, execution logs and a searchable audit trail;
-     the project earned a Distinction as a Temasek Polytechnic Major Project.],
+     designing requestor and reviewer flows through repeated stakeholder demos
+     from November to February; replaced an error-prone database patch and query
+     process with approvals, execution logs and a searchable audit trail, earning
+     a Distinction as a Temasek Polytechnic Major Project.],
   ),
 )
 
@@ -40,13 +43,16 @@
     title: "AnimeKaiser",
     dates: "2026",
     link: "https://github.com/Coeeter/animekaiser",
-    subtitle: [Self-hosted anime library with two-way synchronisation across
-      AniList and MyAnimeList. Bun, Effect, TanStack Start, Drizzle, PostgreSQL.],
+    subtitle: [Full-stack, self-hosted anime tracker with two-way synchronisation
+      across AniList and MyAnimeList. Bun, Effect, TanStack Start, Drizzle,
+      PostgreSQL.],
     bullets: (
-      [Made outbound changes durable and retryable using Postgres
-       `LISTEN/NOTIFY`, avoiding a separate queue service.],
-      [Separated source resolution behind a typed RPC boundary; added passkey
-       authentication and Playwright end-to-end tests.],
+      [Persisted outbound changes as queued database events with visible failure
+       states and user-triggered retries; used PostgreSQL `LISTEN/NOTIFY` to wake
+       workers without a separate queue service.],
+      [Designed and built the responsive interface for discovery, library
+       management, playback and sync recovery; cached AniList and Jikan data in
+       Redis with provider fallbacks.],
     ),
   ),
   (
@@ -82,7 +88,7 @@
     institution: "Temasek Polytechnic",
     dates: "2021 - 2024",
     qualification: "Diploma in Information Technology - GPA 3.86",
-    detail: [Eleven distinctions; Director's List (top 10% of cohort).],
+    detail: [Eleven distinctions; Director's List, Year 1 (top 10% of cohort).],
   ),
 )
 
