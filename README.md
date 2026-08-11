@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="src/assets/brand/icon-dark.svg">
-    <img src="src/assets/brand/icon-light.svg" width="96" alt="N monogram">
+    <source media="(prefers-color-scheme: dark)" srcset="src/assets/brand/icon-light.svg">
+    <img src="src/assets/brand/icon-dark.svg" width="96" alt="N monogram">
   </picture>
 </p>
 
