@@ -19,12 +19,12 @@ export const profile = {
 export const experience = [
   {
     company: "GovTech Singapore",
-    role: "Software Engineer, Intern",
+    role: "Software Engineering Intern",
     period: "Apr 2023 – May 2024",
     points: [
-      "Part of the tech refresh replacing a ministry's ageing licensing and audit system. I built the front end, from requirements through to production.",
-      "Moved to a newly formed AI team for the last five months and built the pipeline that fed staff documents into an assistant they could ask questions of.",
-      "It shipped as a real product, not a prototype, and the team kept it going after I left.",
+      "Translated MOM user requirements and legacy iOSH workflows into business process models and Figma prototypes for iOSH 2.0 licensing modules; conducted UAT before rollout and reported defects to vendors.",
+      "Reverse-engineered iOSH data sources and migrated MOM Insight dashboard logic into SQL queries during a database decommissioning, validating reports against production data with ministry users.",
+      "During an internship extension, joined a newly formed AI team to evaluate an internal retrieval-augmented assistant for MOM. Curated ministry documents, laws and rules, experimented with prompting, tested hallucinations and handed the work to the next team.",
     ],
   },
 ] as const
@@ -48,11 +48,14 @@ export const projects: readonly Project[] = [
     slug: "animekaiser",
     name: "AnimeKaiser",
     year: "2026",
-    blurb: "Keeps an anime library in sync across two sites that don't talk to each other.",
+    blurb:
+      "A full-stack anime tracker with a clean interface for discovery, playback " +
+      "and keeping two libraries in sync.",
     detail:
-      "Two sites that can each be slow, rate-limited or down, so most of the work " +
-      "is handling failure rather than the happy path. Changes queue up and retry " +
-      "instead of quietly disappearing. Log in with a passkey, no password.",
+      "I designed and built it end to end: responsive library and playback flows " +
+      "on the frontend, backed by durable sync events that keep failures visible " +
+      "and retryable. Redis caches rate-limited upstream data, with Jikan fallback " +
+      "when AniList is unavailable.",
     stack: ["Bun", "Effect", "TanStack Start", "Drizzle", "PostgreSQL"],
     repo: "https://github.com/Coeeter/animekaiser",
     link: "https://animekaiser.xyz",
@@ -62,14 +65,17 @@ export const projects: readonly Project[] = [
     slug: "7patches",
     name: "7Patches",
     year: "2024",
-    blurb: "Changing data in a government database had no proper process. This gave it one.",
+    blurb:
+      "Turned a risky database workflow into a clear request-and-review experience.",
     detail:
-      "Request submission, approval routing, execution logging and a searchable " +
-      "audit trail, replacing an ad-hoc manual process. I built it as a proof of " +
-      "concept first and then led a small team of interns on it.",
+      "I designed separate requestor and reviewer flows around clear statuses, " +
+      "feedback and error states, then refined them through repeated stakeholder " +
+      "demos. Behind the interface were approval routing, execution logs and a " +
+      "searchable audit trail replacing an ad-hoc manual process.",
     stack: ["Next.js", "Prisma", "AWS Lambda", "GitHub Actions"],
-    note: "DBS Bank Project Award",
-    noSource: "Internal government system — no public source or demo. Happy to talk through it.",
+    note: "DBS Bank Project Prize",
+    noSource:
+      "Student project prototype — source is private, and the screenshot is not MOM's current production system.",
   },
   {
     slug: "clicktoeat",
@@ -83,7 +89,7 @@ export const projects: readonly Project[] = [
       "Android, then Flutter. Rather than start a new idea every semester I kept " +
       "the same product and changed the stack, which meant I could actually compare " +
       "them. The Android one is the version worth reading: split into modules, and " +
-      "covered by 43 test files across both the logic and the interface.",
+      "covered by 78 unit and instrumented test cases across both logic and interface.",
     stack: ["Kotlin", "Jetpack Compose", "Hilt", "Google Maps", "Firebase"],
     repo: "https://github.com/Coeeter/kt-android-clicktoeat",
     noSource: "The API behind it is no longer hosted, so the app itself won't run today.",
@@ -102,15 +108,17 @@ export const competitions: readonly Competition[] = [
   {
     event: "WorldSkills Singapore",
     year: "2023",
-    result: "Bronze medallist",
-    detail: "Mobile application development.",
+    result: "National Bronze Medallist",
+    detail: "Placed third in Mobile Applications Development.",
+    href:
+      "https://www.worldskills.sg/docs/default-source/default-document-library/worldskills-singapore-phase-2-2023-winners.pdf",
   },
   {
-    event: "iNTUition",
+    event: "iNTUition v9.0",
     year: "2023",
-    result: "Best Pre-University Award",
+    result: "Best Pre-University Hack",
     detail: "EmailGPT, a Gmail extension that drafts replies in place.",
-    href: "https://github.com/Coeeter/EmailGPT",
+    href: "https://devpost.com/software/emailgpt",
   },
   {
     event: "SMU What The Hack",
@@ -153,11 +161,6 @@ export const alsoBuilt: readonly Entry[] = [
     href: "https://github.com/Coeeter/cmdhelper",
   },
   {
-    name: "drizzle-cuid2",
-    detail: "CUID2 columns for Drizzle ORM. A small package, but people use it.",
-    href: "https://github.com/Coeeter/drizzle-cuid2",
-  },
-  {
     name: "AniWays",
     detail:
       "The Go and SvelteKit anime platform I built before AnimeKaiser. Archived — " +
@@ -175,22 +178,23 @@ export const timeline = [
   {
     period: "2021 – 2024",
     label: "Temasek Polytechnic",
-    detail: "Diploma in Information Technology · GPA 3.86, Director's List",
+    detail:
+      "Diploma in Information Technology · GPA 3.86 · 11 distinctions · " +
+      "Director's List, Year 1 (top 10%)",
   },
   {
     period: "2023 – 2024",
     label: "GovTech Singapore",
-    detail: "Software engineer, intern",
+    detail: "Software engineering intern",
   },
   {
     period: "2024 – 2026",
     label: "National Service",
-    detail: "",
+    detail: "Ground Response Force Officer · Singapore Police Force, Airport Police Division",
   },
   {
     period: "2026 – now",
     label: "National University of Singapore",
-    detail: "B.Comp. Computer Science",
+    detail: "BComp Computer Science",
   },
 ] as const
-

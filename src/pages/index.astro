@@ -13,6 +13,16 @@ import {
   timeline,
 } from "@/data/resume"
 import ThemeToggle from "@/components/ThemeToggle.astro"
+import { competitionMedia, openSource, projectMedia } from "@/data/work"
+
+const mediaByProject: Record<
+  string,
+  (typeof projectMedia)[keyof typeof projectMedia]
+> = projectMedia
+const mediaByCompetition: Record<
+  string,
+  (typeof competitionMedia)[keyof typeof competitionMedia]
+> = competitionMedia
 
 const navLinks = [
   { label: "GitHub", href: profile.github },
@@ -68,6 +78,32 @@ const contacts = [
 
   <p class="mt-7 max-w-[62ch] text-[17px] leading-relaxed">{profile.intro}</p>
 
+  <Section title="How I work">
+    <div class="grid gap-5 sm:grid-cols-3">
+      <p>
+        <span class="font-medium">Start with the problem.</span>
+        <span class="text-muted mt-1 block">
+          I do not force one stack onto every project. The users, constraints and
+          failure modes decide the tools.
+        </span>
+      </p>
+      <p>
+        <span class="font-medium">Make failure visible.</span>
+        <span class="text-muted mt-1 block">
+          Retries, audit trails and useful error states matter more to me than a
+          perfect happy-path demo.
+        </span>
+      </p>
+      <p>
+        <span class="font-medium">Make complexity feel simple.</span>
+        <span class="text-muted mt-1 block">
+          Clear states, sensible flows and interfaces people can use without
+          training are part of the engineering, not polish added afterwards.
+        </span>
+      </p>
+    </div>
+  </Section>
+
   <Section title="Experience">
     {
       experience.map((role) => (
@@ -92,8 +128,20 @@ const contacts = [
   <Section title="Selected work">
     <div class="grid gap-8">
       {
-        projects.map((project) => (
+        projects.map((project) => {
+          const media = mediaByProject[project.slug]
+          return (
           <article>
+            {media && (
+              <Image
+                src={media.src}
+                alt={media.alt}
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 1024px) 896px, 100vw"
+                loading="lazy"
+                class="border-line mb-5 h-52 w-full rounded-lg border bg-white object-cover object-top shadow-sm sm:h-72"
+              />
+            )}
             <h3 class="flex flex-wrap items-baseline gap-x-3">
               <span class="font-medium">{project.name}</span>
               <span class="text-muted text-sm tabular-nums">{project.year}</span>
@@ -109,8 +157,16 @@ const contacts = [
             {project.noSource && (
               <p class="text-muted mt-2 text-sm italic">{project.noSource}</p>
             )}
-            {(project.repo || project.link) && (
+            {(project.slug !== "clicktoeat" || project.repo || project.link) && (
               <p class="mt-2 flex flex-wrap gap-x-5 text-sm">
+                {project.slug !== "clicktoeat" && (
+                  <a
+                    class="text-accent font-medium underline underline-offset-4"
+                    href={`/work/${project.slug}`}
+                  >
+                    Case study
+                  </a>
+                )}
                 {project.link && (
                   <a
                     class="text-accent font-medium underline underline-offset-4"
@@ -132,6 +188,31 @@ const contacts = [
               </p>
             )}
           </article>
+          )
+        })
+      }
+    </div>
+  </Section>
+
+  <Section title="Open source">
+    <div class="grid gap-6">
+      {
+        openSource.map((entry) => (
+          <article>
+            <h3 class="font-medium">{entry.name}</h3>
+            <p class="text-muted mt-1 leading-relaxed">{entry.detail}</p>
+            <p class="mt-2 flex flex-wrap gap-x-5 text-sm">
+              {entry.links.map(([label, href]) => (
+                <a
+                  class="text-accent underline underline-offset-4"
+                  href={href}
+                  rel="noopener"
+                >
+                  {label}
+                </a>
+              ))}
+            </p>
+          </article>
         ))
       }
     </div>
@@ -140,7 +221,9 @@ const contacts = [
   <Section title="Competitions">
     <ul class="grid gap-4">
       {
-        competitions.map((entry) => (
+        competitions.map((entry) => {
+          const media = mediaByCompetition[entry.event]
+          return (
           <li>
             <p class="flex flex-wrap items-baseline gap-x-3">
               <span class="font-medium">{entry.event}</span>
@@ -159,8 +242,19 @@ const contacts = [
                 </a>
               )}
             </p>
+            {media && (
+              <Image
+                src={media.src}
+                alt={media.alt}
+                widths={[480, 800, 1100]}
+                sizes="(min-width: 1024px) 896px, 100vw"
+                loading="lazy"
+                class="border-line mt-4 max-h-[30rem] w-full rounded-lg border bg-white object-contain shadow-sm"
+              />
+            )}
           </li>
-        ))
+          )
+        })
       }
     </ul>
   </Section>

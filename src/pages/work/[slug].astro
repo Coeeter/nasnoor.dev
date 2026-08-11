@@ -1,0 +1,101 @@
+---
+import { Image } from "astro:assets"
+import Logo from "@/components/Logo.astro"
+import ThemeToggle from "@/components/ThemeToggle.astro"
+import Base from "@/layouts/Base.astro"
+import { caseStudies } from "@/data/work"
+
+export function getStaticPaths() {
+  return caseStudies.map((study) => ({
+    params: { slug: study.slug },
+    props: { study },
+  }))
+}
+
+type Study = (typeof caseStudies)[number]
+
+const { study } = Astro.props as { study: Study }
+---
+
+<Base title={`${study.title} — Noorullah Nasrullah`} description={study.summary}>
+  <nav class="mb-14 flex items-center gap-3" aria-label="Project navigation">
+    <a href="/" aria-label="Home"><Logo size={30} /></a>
+    <a
+      class="text-muted hover:text-fg hover:bg-line/70 rounded-md px-2 py-1 text-sm transition-colors"
+      href="/"
+    >
+      ← All work
+    </a>
+    <span class="flex-1"></span>
+    <ThemeToggle />
+  </nav>
+
+  <article>
+    <p class="text-accent text-sm font-medium">{study.eyebrow}</p>
+    <h1 class="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
+      {study.title}
+    </h1>
+    <p class="text-muted mt-5 max-w-[64ch] text-lg leading-relaxed sm:text-xl">
+      {study.summary}
+    </p>
+
+    {study.links.length > 0 && (
+      <p class="mt-5 flex flex-wrap gap-x-5 text-sm">
+        {study.links.map(([label, href]) => (
+          <a class="text-accent underline underline-offset-4" href={href} rel="noopener">
+            {label}
+          </a>
+        ))}
+      </p>
+    )}
+
+    {"image" in study && (
+      <Image
+        src={study.image}
+        alt={study.imageAlt}
+        widths={[640, 960, 1400]}
+        sizes="(min-width: 1024px) 896px, 100vw"
+        class="border-line mt-10 w-full rounded-xl border object-cover shadow-sm"
+      />
+    )}
+
+    {"note" in study && (
+      <p class="border-line text-muted mt-4 border-l-2 pl-4 text-sm leading-relaxed">
+        {study.note}
+      </p>
+    )}
+
+    <dl class="border-line mt-12 grid gap-6 border-y py-6 sm:grid-cols-3">
+      {study.facts.map(([label, value]) => (
+        <div>
+          <dt class="text-muted text-sm">{label}</dt>
+          <dd class="mt-1 font-medium">{value}</dd>
+        </div>
+      ))}
+    </dl>
+
+    <div class="mt-14 grid gap-12">
+      {study.sections.map((section) => (
+        <section class="grid gap-3 sm:grid-cols-[11rem_1fr] sm:gap-8">
+          <h2 class="font-semibold">{section.title}</h2>
+          <p class="text-muted max-w-[65ch] leading-relaxed">{section.body}</p>
+        </section>
+      ))}
+    </div>
+
+    {study.gallery.length > 0 && (
+      <div class="mt-14 grid gap-5">
+        {study.gallery.map((item) => (
+          <Image
+            src={item.src}
+            alt={item.alt}
+            widths={[640, 960, 1400]}
+            sizes="(min-width: 1024px) 896px, 100vw"
+            loading="lazy"
+            class="border-line w-full rounded-xl border shadow-sm"
+          />
+        ))}
+      </div>
+    )}
+  </article>
+</Base>
