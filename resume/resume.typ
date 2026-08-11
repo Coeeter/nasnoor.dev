@@ -10,8 +10,9 @@
 
 #let summary = [
   NUS Computer Science undergraduate with 14 months of software engineering
-  experience at GovTech Singapore. Background spans production government
-  systems, retrieval infrastructure and open-source developer tooling.
+  experience at GovTech Singapore. Pragmatic generalist who chooses tools to fit
+  the problem, with experience across production government systems,
+  retrieval-augmented AI and open-source developer tooling.
 ]
 
 #let govtech = (
@@ -22,14 +23,15 @@
     [Delivered the frontend for the production replacement of the Ministry of
      Manpower's legacy iOSH licensing and audit system, contributing from
      requirements and design review through implementation and rollout.],
-    [Joined a newly formed AI team for the final five months and built the
-     document ingestion pipeline for a retrieval-augmented assistant used by
-     ministry staff, parsing source files, extracting content and feeding it
-     into the assistant's retrieval pipeline.],
-    [Proposed and built 7Patches to replace an ad-hoc database patch and query
-     process with reviewed requests, approval routing, execution logs and a
-     searchable audit trail; led a small team of interns through delivery and
-     received the DBS Bank Project Award.],
+    [Joined a newly formed AI team during an internship extension to evaluate an
+     internal retrieval-augmented assistant for MOM, curating ministry documents,
+     laws and rules, experimenting with prompting strategies, testing
+     hallucinations and handing the work over to the next team.],
+    [Proposed 7Patches and served as primary developer on a team of seven interns,
+     iterating with stakeholders from November to February to replace an
+     inefficient, error-prone database patch and query process with reviewed
+     requests, approval routing, execution logs and a searchable audit trail;
+     the project earned a Distinction as a Temasek Polytechnic Major Project.],
   ),
 )
 
@@ -44,8 +46,17 @@
       [Made outbound changes durable and retryable using Postgres
        `LISTEN/NOTIFY`, avoiding a separate queue service.],
       [Separated source resolution behind a typed RPC boundary; added passkey
-       authentication and end-to-end tests running in CI on every deploy.],
+       authentication and Playwright end-to-end tests.],
     ),
+  ),
+  (
+    title: "drizzle-cuid2",
+    dates: "2024",
+    link: "https://github.com/Coeeter/drizzle-cuid2",
+    subtitle: [Small TypeScript utility providing CUID2 column helpers for
+      Drizzle ORM across PostgreSQL, MySQL and SQLite; published on npm, 2k+
+      weekly downloads.],
+    bullets: (),
   ),
   (
     title: "ClickToEat",
@@ -54,17 +65,9 @@
     subtitle: [Restaurant review platform developed across web, API, Android
       and Flutter coursework. Kotlin, Jetpack Compose, Hilt, Google Maps SDK.],
     bullets: (
-      [Built the Android client as a multi-module application with 43 unit and
-       instrumented UI test files across JUnit, Compose Test and UI Automator.],
+      [Built the Android client as a multi-module application with 78 unit and
+       instrumented test cases across JUnit, Compose Test and UI Automator.],
     ),
-  ),
-  (
-    title: "drizzle-cuid2",
-    dates: "2024",
-    link: "https://github.com/Coeeter/drizzle-cuid2",
-    subtitle: [Small TypeScript utility providing CUID2 column helpers for
-      Drizzle ORM across PostgreSQL, MySQL and SQLite; published on npm.],
-    bullets: (),
   ),
 )
 
@@ -92,12 +95,17 @@
 
 #let awards = (
   (
-    title: "WorldSkills Singapore - Bronze Medallist",
-    dates: "2023",
-    detail: "Mobile Application Development",
+    title: "DBS Bank Project Prize",
+    dates: "2024",
+    detail: "7Patches selected among the cohort's top three Major Projects",
   ),
   (
-    title: "iNTUition - Best Pre-University Award",
+    title: "WorldSkills Singapore - National Bronze Medallist",
+    dates: "2023",
+    detail: "Placed third in Mobile Applications Development",
+  ),
+  (
+    title: "iNTUition v9.0 - Best Pre-University Hack",
     dates: "2023",
     detail: "EmailGPT, a Gmail extension for drafting replies directly in the composer",
   ),
@@ -105,7 +113,8 @@
 
 #let skills = (
   (label: "Languages", value: "TypeScript, Go, Kotlin, Python, Java"),
-  (label: "Technologies", value: "React, Node.js, Bun, PostgreSQL, Docker, AWS"),
+  (label: "Frameworks/Tools", value: "React, Effect, TanStack Start, Drizzle"),
+  (label: "Technologies", value: "Node.js, Bun, PostgreSQL, Docker, Cloudflare Workers, AWS"),
 )
 
 #let ink = rgb("#16181a")
