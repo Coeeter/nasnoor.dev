@@ -157,6 +157,7 @@ const navLinks = [
                   <a
                     class="text-accent font-medium underline underline-offset-4"
                     href={`/work/${project.slug}`}
+                    data-astro-prefetch="hover"
                   >
                     Case study
                   </a>
@@ -201,6 +202,7 @@ const navLinks = [
                   class="text-accent underline underline-offset-4"
                   href={href}
                   rel="noopener"
+                  data-astro-prefetch={href.startsWith("/") ? "hover" : undefined}
                 >
                   {label}
                 </a>
