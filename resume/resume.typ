@@ -10,9 +10,8 @@
 
 #let summary = [
   NUS Computer Science undergraduate with 14 months of software engineering
-  experience at GovTech Singapore. Delivered the frontend for a production
-  government licensing-system replacement and built document ingestion for a
-  retrieval assistant used by ministry staff.
+  experience at GovTech Singapore. Background spans production government
+  systems, retrieval infrastructure and open-source developer tooling.
 ]
 
 #let govtech = (
@@ -85,10 +84,10 @@
 )
 
 #let service = (
-  title: "Full-time National Service",
+  title: "Ground Response Force Officer",
   organisation: "Singapore Police Force",
   dates: "2024 - 2026",
-  detail: "Ground Response Force Officer, Airport Police Division",
+  detail: "Full-time National Service, Airport Police Division",
 )
 
 #let awards = (
@@ -100,7 +99,7 @@
   (
     title: "iNTUition - Best Pre-University Award",
     dates: "2023",
-    detail: "EmailGPT, a Gmail extension for drafting replies in place",
+    detail: "EmailGPT, a Gmail extension for drafting replies directly in the composer",
   ),
 )
 
