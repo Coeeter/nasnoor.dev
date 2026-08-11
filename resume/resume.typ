@@ -27,13 +27,13 @@
      logic into SQL queries during a database decommissioning, validating
      reports against production data with ministry users.],
     [Joined a newly formed AI team during an internship extension to evaluate an
-     internal retrieval-augmented assistant for MOM, curating ministry documents,
-     laws and rules, experimenting with prompting strategies, testing
-     hallucinations and handing the work over to the next team.],
+     internal retrieval-augmented assistant for MOM; curated ministry documents,
+     laws and rules, evaluated prompting strategies and tested for hallucinated
+     answers.],
     [Proposed 7Patches and served as primary developer on a team of seven interns,
-     designing requestor and reviewer flows through repeated stakeholder demos
-     from November to February; replaced an error-prone database patch and query
-     process with approvals, execution logs and a searchable audit trail, earning
+     designing a request-and-review prototype through repeated stakeholder demos
+     from November to February around an error-prone database patch and query
+     process, with approvals, execution logs and a searchable audit trail; earned
      a Distinction as a Temasek Polytechnic Major Project.],
   ),
 )
@@ -129,7 +129,7 @@
 #set document(title: "Noorullah Nasrullah - Resume", author: profile.name)
 #set page(paper: "a4", margin: (x: 16mm, top: 13mm, bottom: 13mm))
 #set text(
-  font: ("Helvetica Neue", "Helvetica", "Arial"),
+  font: "Inter",
   size: 10.2pt,
   fill: ink,
   lang: "en",
@@ -138,7 +138,7 @@
 #show link: it => it
 
 #let section(title) = {
-  v(13pt)
+  v(11pt)
   block(
     width: 100%,
     stroke: (bottom: 0.6pt + ink),
@@ -147,8 +147,8 @@
   )
 }
 
-#let heading(title, organisation, dates, detail: none) = {
-  v(10pt)
+#let heading(title, organisation, dates, detail: none, detail-size: 9.3pt) = {
+  v(9pt)
   block(width: 100%)[
     #grid(
       columns: (1fr, auto),
@@ -156,7 +156,7 @@
       [#text(weight: "bold", title)#if organisation != [] [ #text(weight: "regular")[at] #text(weight: "bold", organisation)]],
       text(size: 9.3pt, dates),
     )
-    #if detail != none [#v(4pt)#text(size: 9.3pt, detail)]
+    #if detail != none [#v(4pt)#text(size: detail-size, detail)]
   ]
 }
 
@@ -166,7 +166,7 @@
   } else {
     link(project.link, project.title)
   }
-  heading(title, [], project.dates, detail: project.subtitle)
+  heading(title, [], project.dates, detail: project.subtitle, detail-size: 10.2pt)
 }
 
 #let bullets(items) = {
