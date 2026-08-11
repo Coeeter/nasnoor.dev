@@ -4,6 +4,9 @@ import tailwindcss from "@tailwindcss/vite"
 
 export default defineConfig({
   site: "https://nasnoor.dev",
+  redirects: {
+    "/projects": "/#work",
+  },
   fonts: [
     {
       provider: fontProviders.fontsource(),
