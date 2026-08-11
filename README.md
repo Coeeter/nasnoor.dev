@@ -1,73 +1,42 @@
-# nasnoor.dev
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="src/assets/brand/icon-dark.svg">
+    <img src="src/assets/brand/icon-light.svg" width="96" alt="N monogram">
+  </picture>
+</p>
 
-My portfolio. One page, no framework on the client, static output.
+<h1 align="center">nasnoor.dev</h1>
 
-Live at [nasnoor.dev](https://nasnoor.dev).
+<p align="center">
+  My portfolio — the systems I build, the problems behind them and what I learnt along the way.
+</p>
 
-## Running it
+<p align="center">
+  <a href="https://nasnoor.dev">Website</a> ·
+  <a href="https://nasnoor.dev/nasrullah-resume.pdf">Résumé</a>
+</p>
+
+## About
+
+A small static site covering my work at GovTech Singapore, full-stack projects,
+open-source tools and competitions. The project pages focus on both the interface
+people use and the engineering that keeps it reliable.
+
+Built with Astro, Tailwind and TypeScript. The résumé is written in Typst and the
+site is hosted on Cloudflare.
+
+## Run locally
 
 ```bash
 bun install
 bun run dev
 ```
 
-## Scripts
-
-| Script | What it does |
-| --- | --- |
-| `bun run dev` | Dev server on port 4321 |
-| `bun run build` | Static build into `dist/` |
-| `bun run check` | Type check, including `.astro` files |
-| `bun run resume` | Recompile the resume PDF from Typst |
-| `bun run build:all` | Resume, then site |
-
-Deployment runs `build`, not `build:all` — the build host has no Typst
-installed, so the PDF is committed and regenerated locally instead.
-
-## Deploying
-
-Cloudflare Workers, serving `dist/` as static assets. `wrangler.jsonc` holds
-that configuration.
-
-The site is fully prerendered, so it does not use `@astrojs/cloudflare`. That
-adapter is for server-rendered routes, and adding it pulls in a version of
-Astro's internals this project does not use.
-
-## The resume
-
-`resume/resume.typ` is the source. The PDF at `public/nasrullah-resume.pdf` is
-generated from it, so edit the `.typ` file and run `bun run resume` rather than
-touching the PDF.
-
-Typst is installed separately:
-
 ```bash
-brew install typst
+bun run check    # check the site
+bun run build    # production build
+bun run resume   # regenerate the résumé PDF
 ```
 
-It is kept to one page, single column, with no tables and contact details in
-the body rather than the page header, since applicant tracking systems tend to
-skip headers.
-
-## Content
-
-Everything the page renders lives in `src/data/resume.ts`. Adding a project or
-changing a link means editing that file, not the markup.
-
-The site copy and the resume copy are deliberately written differently. The
-site is plain and short; the resume keeps the formal register and the technical
-detail that recruiters and keyword scanners look for.
-
-## Built with
-
-Astro, Tailwind, TypeScript, Typst. Fonts are self-hosted and preloaded through
-Astro's font pipeline, which also generates a metric-matched fallback so text
-does not shift while the real font loads.
-
-## Notes
-
-- Theme follows the system until you pick one, then remembers the choice.
-- The logo is a single SVG path. The stroke animation draws it on load, and on
-  hover it runs a full pass and finishes wherever it is rather than snapping
-  back.
-- Scroll to the bottom.
+The résumé source lives at [`resume/resume.typ`](resume/resume.typ). Its generated
+PDF is committed because the deployment build does not have Typst installed.
