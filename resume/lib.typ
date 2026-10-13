@@ -30,7 +30,7 @@
 }
 
 #let section(title) = {
-  v(13pt)
+  v(11pt)
   block(
     width: 100%,
     stroke: (bottom: 0.6pt + ink),

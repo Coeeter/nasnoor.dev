@@ -148,15 +148,15 @@ export const alsoBuilt: readonly Entry[] = [
   {
     name: "CloudSync",
     detail:
-      "Private cloud archive. A macOS app drains an inbox folder into S3 and deletes " +
-      "files only once the upload is verified. Cloudflare Workers, D1, signed CloudFront.",
+      "A self-hosted, Google Drive-style archive for my own files. A Mac app uploads " +
+      "anything dropped into a folder and only deletes it once the cloud copy is verified.",
     href: "https://github.com/Coeeter/cloudsync",
   },
   {
     name: "Course planner",
     detail:
-      "Canvas-to-Notion planner where an agent edits an isolated SQLite copy that is " +
-      "validated before anything reaches Notion.",
+      "An AI agent that turns NUS Canvas coursework into a Notion task board, checking " +
+      "every change before it lands.",
     href: "https://github.com/Coeeter/nus-canvas-sync",
   },
   {

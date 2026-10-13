@@ -15,10 +15,13 @@
 #experience-entry(experience.ns)
 
 #section("Projects")
-#project-entry(pick(projects.animekaiser, 1, 2))
+#project-entry(pick(projects.animekaiser, 0))
 #project-entry(pick(projects.cloudsync, 0, 1))
-#project-entry(pick(projects.nus-canvas-sync, 1, 2))
+#project-entry(pick(projects.nus-canvas-sync, 0))
 #project-entry(projects.drizzle-cuid2)
+
+#section("Co-curricular Activities")
+#experience-entry(activities.clynk)
 
 #section("Achievements")
 #achievement-list((

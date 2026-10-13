@@ -54,9 +54,8 @@
        it doubled as my polytechnic Major Project, earning a Distinction and the
        DBS Bank Project Prize.],
       // 2: dashboard reverse engineering (keep agency operational details out: public resume)
-      [Reverse-engineered large MOM dashboard reports into hand-written SQL
-       against a legacy database whose schema no longer matched the reports,
-       validating results against production data with ministry users.],
+      [Reverse-engineered MOM dashboard reports into SQL against a legacy
+       database, validating results with ministry users.],
       // 3: AI / RAG evaluation
       [Prototyped a RAG assistant over MOM safety and licensing documents in a
        new AI team, tuning prompts and chaining models to cross-check answers
@@ -84,14 +83,18 @@
     links: (("Website", "https://animekaiser.xyz"), ("GitHub", "https://github.com/Coeeter/animekaiser")),
     tech: ("Bun", "Effect", "TanStack Start", "Drizzle", "PostgreSQL", "Redis"),
     bullets: (
-      // 0: product summary
+      // 0-1: plain language, for the general resume
+      [Built a self-hosted anime tracker that keeps AniList and MyAnimeList in
+       sync, queuing every change so failed syncs are shown and retryable
+       instead of silently lost.],
+      [Designed the full interface for discovering, tracking and watching anime
+       on desktop and mobile, kept fast when upstream services are slow or down.],
+      // 2-4: technical alternates
       [Designed and built a full-stack anime tracker end to end, with two-way
        library synchronisation across AniList and MyAnimeList.],
-      // 1: durable sync
       [Persisted outbound changes as queued database events with visible failure
        states and user-triggered retries; used PostgreSQL `LISTEN/NOTIFY` to wake
        workers without a separate queue service.],
-      // 2: frontend + caching
       [Built the responsive interface for discovery, library management,
        playback and sync recovery; cached AniList and Jikan data in Redis with
        provider fallbacks.],
@@ -105,8 +108,8 @@
     tech: ("TypeScript", "Drizzle ORM"),
     bullets: (
       // npm API, Oct 2026: ~10k/week, ~210k in the past year; 34 GitHub stars
-      [Published typed CUID2 column builders for Drizzle ORM across PostgreSQL,
-       MySQL and SQLite; 10k+ weekly downloads and 200k+ in the past year.],
+      [Typed CUID2 column builders for PostgreSQL, MySQL and SQLite; 10k+ weekly
+       npm downloads.],
     ),
   ),
   clicktoeat: (
@@ -124,19 +127,24 @@
   cloudsync: (
     title: "CloudSync",
     dates: "2026",
-    subtitle: "Single-owner cloud archive",
+    subtitle: "Self-hosted, Google Drive-style personal archive",
     links: (("GitHub", "https://github.com/Coeeter/cloudsync"),),
-    tech: ("Cloudflare Workers", "D1", "AWS", "Terraform", "Electron"),
+    tech: ("Cloudflare Workers", "AWS", "Terraform", "Electron"),
     bullets: (
-      // 0: verified ingestion
+      // 0-1: plain language, for the general resume
+      [Built a Mac app that uploads anything dropped into a folder, deleting the
+       local copy only after the cloud copy is verified to prevent data loss
+       during transfer.],
+      [Built the web app to browse, search, preview and download photos, videos
+       and documents, with every file kept private and never publicly
+       accessible.],
+      // 2-4: technical alternates, for infrastructure and backend roles
       [Built a macOS Electron app that drains a local inbox into private S3,
        deleting each file only after its checksum is verified and its metadata
        committed, with previews generated locally.],
-      // 1: delivery and access control
       [Served the file manager from TanStack Start on Cloudflare Workers and D1;
        files are read only through CloudFront signed cookies, so no object is
        publicly addressable.],
-      // 2: infrastructure and migration
       [Migrated production from a Docker and PostgreSQL VPS to Workers, D1 and a
        Lambda that streams folder ZIPs, with Terraform-managed AWS resources
        deployed through GitHub OIDC.],
@@ -149,14 +157,17 @@
     links: (("GitHub", "https://github.com/Coeeter/nus-canvas-sync"),),
     tech: ("TypeScript", "Bun", "SQLite", "Codex", "Notion API", "Docker"),
     bullets: (
-      // 0: product summary
+      // 0-1: plain language, for the general resume
+      [Built an AI agent that turns NUS Canvas coursework into a Notion task
+       board, validating proposed changes before updating the planner.],
+      [Restricted the agent to read-only Canvas access and prevented direct
+       Notion writes; imported manual Notion edits before each run.],
+      // 2-4: technical alternates
       [Built a planner that turns NUS Canvas course data into a Notion task
        board, with one Codex session reconciling every active course per run.],
-      // 1: reconciliation design
       [Kept SQLite as canonical state: the agent edits an isolated copy that is
        validated and atomically promoted, then Notion changes are published as
        an idempotent diff and verified.],
-      // 2: agent boundaries
       [Bounded the agent's authority: Canvas access is read-only, the agent never
        receives Notion credentials, and manual Notion edits are imported and
        highlighted before reconciliation.],
@@ -237,6 +248,23 @@
     bullets: (
       [Built the Flutter client and admin console for a map of public water
        coolers whose submitted photos are verified by a model.],
+    ),
+  ),
+)
+
+// Co-curricular activities; rendered with experience-entry.
+#let activities = (
+  // Repo is private; the pilot figure is the team's (also on Nitish's resume).
+  clynk: (
+    organisation: "Clynk",
+    role: "Co-founder & Software Engineer",
+    dates: "Nov 2023 – May 2024",
+    aside: "Student startup",
+    bullets: (
+      [Built an NFC business card web app with switchable profiles in a team of
+       five; owned cross-subdomain sign-in and onboarding through card activation.],
+      [Piloted the working product at Temasek Polytechnic Open House 2024, with
+       200+ visitor interactions.],
     ),
   ),
 )
