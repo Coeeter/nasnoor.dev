@@ -11,17 +11,17 @@
 #education-entry(education.tp)
 
 #section("Experience")
-#experience-entry(experience.govtech)
+#experience-entry(pick(experience.govtech, 0, 1, 2, 3))
 #experience-entry(experience.ns)
 
 #section("Projects")
-#project-entry(projects.animekaiser)
+#project-entry(pick(projects.animekaiser, 1, 2))
+#project-entry(pick(projects.cloudsync, 0, 1))
+#project-entry(pick(projects.nus-canvas-sync, 1, 2))
 #project-entry(projects.drizzle-cuid2)
-#project-entry(projects.clicktoeat)
 
 #section("Achievements")
 #achievement-list((
-  achievements.dbs,
   achievements.worldskills,
   achievements.intuition,
 ))
@@ -29,6 +29,7 @@
 #section("Skills")
 #skill-list((
   skills.languages,
-  skills.frameworks,
-  skills.infrastructure,
+  skills.frontend,
+  skills.backend,
+  skills.cloud,
 ))

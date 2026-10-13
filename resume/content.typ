@@ -22,13 +22,13 @@
 #let education = (
   nus: (
     institution: "National University of Singapore",
-    dates: "2026 - 2030 (Expected)",
+    dates: "2026 – 2030 (Expected)",
     qualification: "Bachelor of Computing in Computer Science",
     bullets: (),
   ),
   tp: (
     institution: "Temasek Polytechnic",
-    dates: "2021 - 2024",
+    dates: "2021 – 2024",
     qualification: "Diploma in Information Technology",
     grade: "GPA: 3.86",
     bullets: (
@@ -41,34 +41,36 @@
   govtech: (
     organisation: "GovTech Singapore",
     role: "Software Engineering Intern",
-    dates: "Apr 2023 - May 2024",
+    dates: "Apr 2023 – May 2024",
     aside: "Singapore",
+    tech: ("SQL", "Next.js", "Prisma", "AWS Lambda", "GitHub Actions", "Figma"),
     bullets: (
-      // 0: requirements, prototyping, UAT
-      [Translated MOM user requirements and legacy iOSH workflows into business
-       process models and Figma prototypes for iOSH 2.0 licensing modules;
-       conducted UAT before rollout and reported defects to vendors.],
-      // 1: data, SQL migration
-      [Reverse-engineered iOSH data sources and migrated MOM Insight dashboard
-       logic into SQL queries during a database decommissioning, validating
-       reports against production data with ministry users.],
-      // 2: AI / RAG evaluation
-      [Joined a newly formed AI team during an internship extension to evaluate
-       an internal retrieval-augmented assistant for MOM; curated ministry
-       documents, laws and rules, evaluated prompting strategies and tested for
-       hallucinated answers.],
-      // 3: 7Patches
-      [Proposed 7Patches and served as primary developer on a team of seven
-       interns, designing a request-and-review prototype through repeated
-       stakeholder demos around an error-prone database patch and query
-       process, with approvals, execution logs and a searchable audit trail;
-       earned a Distinction as a Temasek Polytechnic Major Project.],
+      // 0: 7Patches (internship + polytechnic Major Project)
+      [Proposed and built 7Patches, a request-and-review workflow for database
+       patches and queries with approvals, execution logs and an audit trail,
+       refined through repeated stakeholder demos.],
+      // 1: 7Patches recognition
+      [Delivered 7Patches as the primary developer on a team of seven interns;
+       it doubled as my polytechnic Major Project, earning a Distinction and the
+       DBS Bank Project Prize.],
+      // 2: dashboard reverse engineering (keep agency operational details out: public resume)
+      [Reverse-engineered large MOM dashboard reports into hand-written SQL
+       against a legacy database whose schema no longer matched the reports,
+       validating results against production data with ministry users.],
+      // 3: AI / RAG evaluation
+      [Prototyped a RAG assistant over MOM safety and licensing documents in a
+       new AI team, tuning prompts and chaining models to cross-check answers
+       and cut hallucinations.],
+      // 4: requirements, prototyping, UAT
+      [Modelled legacy iOSH licensing workflows and prototyped iOSH 2.0 in Figma
+       from MOM requirements; ran UAT before rollout and reported defects to
+       vendors.],
     ),
   ),
   ns: (
     organisation: "Singapore Police Force",
     role: "Ground Response Force Officer (Full-time National Service)",
-    dates: "2024 - 2026",
+    dates: "2024 – 2026",
     aside: "Airport Police Division",
     bullets: (),
   ),
@@ -102,14 +104,14 @@
     links: (("npm", "https://www.npmjs.com/package/drizzle-cuid2"), ("GitHub", "https://github.com/Coeeter/drizzle-cuid2")),
     tech: ("TypeScript", "Drizzle ORM"),
     bullets: (
+      // npm API, Oct 2026: ~10k/week, ~210k in the past year; 34 GitHub stars
       [Published typed CUID2 column builders for Drizzle ORM across PostgreSQL,
-       MySQL and SQLite, preserving Drizzle's fluent column API; 2k+ weekly
-       downloads.],
+       MySQL and SQLite; 10k+ weekly downloads and 200k+ in the past year.],
     ),
   ),
   clicktoeat: (
     title: "ClickToEat",
-    dates: "2022 - 2023",
+    dates: "2022 – 2023",
     subtitle: "Restaurant review platform",
     links: (("GitHub", "https://github.com/Coeeter/kt-android-clicktoeat"),),
     tech: ("Kotlin", "Jetpack Compose", "Hilt", "Google Maps SDK"),
@@ -129,11 +131,11 @@
       // 0: verified ingestion
       [Built a macOS Electron app that drains a local inbox into private S3,
        deleting each file only after its checksum is verified and its metadata
-       committed, with image, video and PDF previews generated locally.],
+       committed, with previews generated locally.],
       // 1: delivery and access control
-      [Served the catalog and file manager from TanStack Start on Cloudflare
-       Workers and D1; files are read through CloudFront with Origin Access
-       Control and signed cookies, so no object is publicly addressable.],
+      [Served the file manager from TanStack Start on Cloudflare Workers and D1;
+       files are read only through CloudFront signed cookies, so no object is
+       publicly addressable.],
       // 2: infrastructure and migration
       [Migrated production from a Docker and PostgreSQL VPS to Workers, D1 and a
        Lambda that streams folder ZIPs, with Terraform-managed AWS resources
@@ -215,7 +217,7 @@
   water-where-ah: (
     title: "water-where-ah",
     dates: "2023",
-    subtitle: "Crowdsourced water cooler map, SMU What The Hack finalist",
+    subtitle: "Crowdsourced water cooler map, SUTD What The Hack finalist",
     links: (("GitHub", "https://github.com/Icyautumn/water-where-ah"),),
     tech: ("Flutter",),
     bullets: (
@@ -241,8 +243,8 @@
     dates: "2023",
     detail: "Best Pre-University Hack for EmailGPT",
   ),
-  smu-wth: (
-    title: "SMU What The Hack",
+  sutd-wth: (
+    title: "SUTD What The Hack",
     dates: "2023",
     detail: "Finalist with water-where-ah",
   ),
@@ -256,9 +258,9 @@
 // Skill vocabulary. Resume files pick and order groups; tailored variants may
 // regroup or drop items but should only list skills evidenced elsewhere.
 #let skills = (
-  languages: (label: "Languages", items: ("TypeScript", "Go", "Kotlin", "Python", "Java", "SQL")),
-  frameworks: (label: "Frameworks", items: ("React", "Effect", "TanStack Start", "Drizzle", "Jetpack Compose", "Flutter")),
-  infrastructure: (label: "Infrastructure", items: ("Node.js", "Bun", "PostgreSQL", "Redis", "Docker", "Cloudflare Workers", "AWS")),
-  ai: (label: "AI", items: ("Retrieval-augmented generation", "Prompt evaluation", "LLM tooling")),
-  design: (label: "Product", items: ("Figma", "Business process modelling", "UAT")),
+  languages: (label: "Languages", items: ("TypeScript", "JavaScript", "Python", "Go", "Kotlin", "Java", "SQL")),
+  frontend: (label: "Frontend & Mobile", items: ("React", "Next.js", "Tailwind CSS", "Jetpack Compose", "Flutter")),
+  backend: (label: "Backend & Data", items: ("Node.js", "Bun", "PostgreSQL", "Redis", "SQLite", "Drizzle", "Prisma")),
+  cloud: (label: "Cloud & DevOps", items: ("AWS", "Cloudflare Workers", "Docker", "Terraform", "GitHub Actions")),
+  ai: (label: "AI", items: ("RAG evaluation", "Prompt engineering", "LLM agents")),
 )

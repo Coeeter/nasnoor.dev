@@ -80,13 +80,16 @@
   items: item.bullets,
 )
 
-#let experience-entry(item) = entry(
-  item.organisation,
-  item.dates,
-  subtitle: item.role,
-  aside: item.at("aside", default: none),
-  items: item.bullets,
-)
+#let experience-entry(item) = {
+  let tech = item.at("tech", default: ())
+  entry(
+    item.organisation,
+    item.dates,
+    subtitle: item.role,
+    aside: item.at("aside", default: none),
+    items: item.bullets + if tech.len() > 0 { ([*Technologies:* #tech.join(", ")],) } else { () },
+  )
+}
 
 #let project-entry(item) = {
   let subtitle = {
