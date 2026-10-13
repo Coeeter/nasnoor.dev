@@ -146,6 +146,20 @@ export interface Entry {
 
 export const alsoBuilt: readonly Entry[] = [
   {
+    name: "CloudSync",
+    detail:
+      "Private cloud archive. A macOS app drains an inbox folder into S3 and deletes " +
+      "files only once the upload is verified. Cloudflare Workers, D1, signed CloudFront.",
+    href: "https://github.com/Coeeter/cloudsync",
+  },
+  {
+    name: "Course planner",
+    detail:
+      "Canvas-to-Notion planner where an agent edits an isolated SQLite copy that is " +
+      "validated before anything reaches Notion.",
+    href: "https://github.com/Coeeter/nus-canvas-sync",
+  },
+  {
     name: "ntmux",
     detail: "Declarative tmux session manager. Go.",
     href: "https://github.com/Coeeter/ntmux",

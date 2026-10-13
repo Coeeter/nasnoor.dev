@@ -12,6 +12,7 @@
     "astro": "astro",
     "check": "astro check",
     "resume": "typst compile resume/resume.typ public/nasrullah-resume.pdf --root . --font-path resume/fonts",
+    "resume:variant": "sh -c 'mkdir -p resume/out && typst compile resume/variants/$0.typ resume/out/$0.pdf --root . --font-path resume/fonts'",
     "build:all": "bun run resume && astro build"
   },
   "dependencies": {
