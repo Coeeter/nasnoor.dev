@@ -121,7 +121,7 @@ export const competitions: readonly Competition[] = [
     href: "https://devpost.com/software/emailgpt",
   },
   {
-    event: "SMU What The Hack",
+    event: "SUTD What The Hack",
     year: "2023",
     result: "Finalist",
     detail:
