@@ -214,6 +214,20 @@
        composer; won Best Pre-University Hack.],
     ),
   ),
+  // Team with Putt and Nitish. The user count comes from Putt's resume; the
+  // calculation logic and module/group flows are Nas's commits.
+  gpa-buy-wat: (
+    title: "GPA Buy Wat?",
+    dates: "2023",
+    subtitle: "GPA calculator, Hack&Roll 2023",
+    links: (("GitHub", "https://github.com/PuttTim/gpa-buy-wat"), ("Website", "https://gpa-buy-wat.vercel.app")),
+    tech: ("React", "TypeScript", "Chakra UI"),
+    bullets: (
+      [Shipped a mobile-friendly GPA calculator for Singapore universities and
+       polytechnics in a 24-hour hackathon team of three, reaching 5,000+ users;
+       built the GPA calculation logic and module and group management.],
+    ),
+  ),
   water-where-ah: (
     title: "water-where-ah",
     dates: "2023",
